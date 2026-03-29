@@ -1,0 +1,125 @@
+﻿.contract-panel {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.contract-actions {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.contract-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 0.8rem;
+  min-height: 0;
+}
+
+.contract-editor-card,
+.contract-history-card {
+  padding: 0.9rem;
+  min-height: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.contract-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.contract-editor {
+  min-height: 380px;
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.35;
+}
+
+.contract-history-card h3 {
+  margin: 0;
+}
+
+.contract-history-subtitle {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.contract-history-list {
+  display: grid;
+  gap: 0.6rem;
+  max-height: 68vh;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.contract-history-item {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(20, 23, 25, 0.82);
+  padding: 0.6rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contract-history-item-active {
+  border-color: rgba(124, 209, 176, 0.58);
+  box-shadow: 0 0 0 1px rgba(124, 209, 176, 0.22);
+}
+
+.contract-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.contract-history-item p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.contract-history-preview {
+  display: block;
+  white-space: pre-wrap;
+  color: #c7d0d8;
+  background: rgba(13, 16, 20, 0.8);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.contract-history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+@media (max-width: 1024px) {
+  .contract-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contract-history-list {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 639px) {
+  .contract-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contract-actions .btn {
+    width: 100%;
+  }
+
+  .contract-editor {
+    min-height: 300px;
+  }
+}

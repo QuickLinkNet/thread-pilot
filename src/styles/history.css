@@ -1,0 +1,45 @@
+.history-modal-card {
+  width: min(980px, 100%);
+}
+
+.history-feed {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.65rem;
+  max-height: min(58vh, 520px);
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.history-item {
+  padding: 0.75rem;
+}
+
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.history-head span {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+
+.history-meta {
+  margin-top: 0.25rem;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+
+.history-payload {
+  margin: 0.5rem 0 0;
+  padding: 0.55rem;
+  border-radius: var(--radius-sm);
+  background: #121416;
+  border: 1px solid var(--line-soft);
+  color: #d7dde5;
+  font-size: 0.74rem;
+  overflow: auto;
+}

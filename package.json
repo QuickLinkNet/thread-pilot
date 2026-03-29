@@ -1,0 +1,41 @@
+{
+    "name":  "thread-pilot",
+    "private":  true,
+    "version":  "1.0.0",
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "vite",
+                    "build":  "tsc -b \u0026\u0026 vite build",
+                    "lint":  "eslint .",
+                    "preview":  "vite preview",
+                    "dev:sanity":  "node scripts/dev-sanity.mjs",
+                    "deploy:prepare":  "node scripts/prepare-deploy.mjs",
+                    "deploy:ftp":  "npm run build \u0026\u0026 npm run deploy:prepare \u0026\u0026 node --env-file=.env scripts/upload-ftp.mjs",
+                    "tsc:check":  "tsc -b --pretty false",
+                    "api:smoke":  "node scripts/api-smoke.mjs",
+                    "dev:guard":  "npm run dev:sanity \u0026\u0026 npm run api:smoke"
+                },
+    "dependencies":  {
+                         "basic-ftp":  "^5.0.5",
+                         "react":  "^19.2.0",
+                         "react-dom":  "^19.2.0"
+                     },
+    "devDependencies":  {
+                            "@eslint/js":  "^9.39.1",
+                            "@tailwindcss/postcss":  "^4.2.1",
+                            "@types/node":  "^24.12.0",
+                            "@types/react":  "^19.2.7",
+                            "@types/react-dom":  "^19.2.3",
+                            "@vitejs/plugin-react":  "^5.1.1",
+                            "autoprefixer":  "^10.4.27",
+                            "eslint":  "^9.39.1",
+                            "eslint-plugin-react-hooks":  "^7.0.1",
+                            "eslint-plugin-react-refresh":  "^0.4.24",
+                            "globals":  "^16.5.0",
+                            "postcss":  "^8.5.8",
+                            "tailwindcss":  "^4.2.1",
+                            "typescript":  "~5.9.3",
+                            "typescript-eslint":  "^8.48.0",
+                            "vite":  "^7.3.1"
+                        }
+}

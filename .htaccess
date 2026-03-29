@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Protect API database directory
+RewriteRule ^api/data/ - [F,L]
+
+# API routes
+RewriteRule ^api/install$ api/install.php [L]
+RewriteRule ^api/reset$ api/reset.php [L]
+RewriteRule ^api/test$ api/test.php [L]
+RewriteRule ^api/(.*)$ api/index.php?route=$1 [QSA,L]
+
+# Frontend - serve static files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L]
