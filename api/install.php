@@ -109,9 +109,6 @@ try {
 
     $personas = [
         ['name' => $adminName, 'role' => $adminRole],
-        ['name' => 'Tom', 'role' => 'frontend'],
-        ['name' => 'Fabian', 'role' => 'backend'],
-        ['name' => 'Dominik', 'role' => 'migration'],
     ];
 
     $stmt = $pdo->prepare('INSERT INTO personas (name, role, token, skills) VALUES (?, ?, ?, ?)');

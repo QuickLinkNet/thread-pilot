@@ -77,6 +77,15 @@ function envValue($key, $default = null) {
 
 function getDB() {
     $dbPath = __DIR__ . '/data/thread-pilot.sqlite';
+    $dataDir = dirname($dbPath);
+
+    if (!is_dir($dataDir)) {
+        if (!mkdir($dataDir, 0755, true) && !is_dir($dataDir)) {
+            http_response_code(500);
+            echo json_encode(['ok' => false, 'error' => 'Database directory could not be created']);
+            exit;
+        }
+    }
 
     try {
         $pdo = new PDO('sqlite:' . $dbPath);
@@ -96,6 +105,48 @@ function getDB() {
 }
 
 function ensureSchema($pdo) {
+    $pdo->exec('
+        CREATE TABLE IF NOT EXISTS personas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            role TEXT NOT NULL,
+            token TEXT NOT NULL UNIQUE,
+            skills TEXT NOT NULL DEFAULT "[]",
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ');
+
+    $pdo->exec('
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender TEXT NOT NULL,
+            recipient TEXT NOT NULL DEFAULT "all",
+            type TEXT NOT NULL DEFAULT "message",
+            task_id INTEGER NULL,
+            mentions TEXT NOT NULL DEFAULT "[]",
+            content TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ');
+
+    $pdo->exec('
+        CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            description TEXT NOT NULL,
+            area TEXT NOT NULL DEFAULT "",
+            tags TEXT NOT NULL DEFAULT "",
+            assignee TEXT NOT NULL,
+            status TEXT NOT NULL DEFAULT "open",
+            priority TEXT NOT NULL DEFAULT "normal",
+            locked_by TEXT NULL,
+            depends_on TEXT NOT NULL DEFAULT "[]",
+            deleted_at DATETIME NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ');
+
     $stmt = $pdo->query('PRAGMA table_info(tasks)');
     $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $columnNames = array_column($columns, 'name');
