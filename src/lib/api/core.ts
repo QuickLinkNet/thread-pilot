@@ -1,5 +1,6 @@
 import type { ApiResponse } from '../../types/api';
 import type { ApiCore } from './types';
+import { isValidThreadPilotToken, normalizeThreadPilotToken } from '../token';
 
 function parseLooseJson<T>(raw: string): ApiResponse<T> | null {
   const trimmed = raw.trim();
@@ -45,12 +46,14 @@ export class DefaultApiCore implements ApiCore {
 
   constructor(baseUrl: string, token: string, persona: string) {
     this.baseUrl = baseUrl;
-    this.token = token;
+    const normalized = normalizeThreadPilotToken(token);
+    this.token = isValidThreadPilotToken(normalized) ? normalized : '';
     this.persona = persona;
   }
 
   setToken(token: string) {
-    this.token = token;
+    const normalized = normalizeThreadPilotToken(token);
+    this.token = isValidThreadPilotToken(normalized) ? normalized : '';
   }
 
   setPersona(persona: string) {

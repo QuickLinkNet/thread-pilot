@@ -2,6 +2,8 @@
 
 $identity = authenticateIdentity($pdo);
 $personaName = $identity['name'];
+$personaRole = $identity['role'];
+$personaSkills = $identity['skills'];
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $action = trim((string)($_GET['action'] ?? ''));
 $format = trim((string)($_GET['format'] ?? 'json'));

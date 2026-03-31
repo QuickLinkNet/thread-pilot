@@ -4,18 +4,23 @@ import { TokenLogin } from './components/organisms/TokenLogin';
 import { Card } from './components/atoms/Card';
 import { Spinner } from './components/atoms/Spinner';
 import { apiClient } from './lib/api-client';
+import { isValidThreadPilotToken, normalizeThreadPilotToken } from './lib/token';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const envToken = import.meta.env.VITE_API_TOKEN || '';
+  const envToken = normalizeThreadPilotToken(import.meta.env.VITE_API_TOKEN || '');
 
   useEffect(() => {
     const validateStoredToken = async () => {
-      const storedToken = localStorage.getItem('api_token') || '';
-      const token = storedToken || envToken;
+      const storedToken = normalizeThreadPilotToken(localStorage.getItem('api_token') || '');
+      const candidateToken = storedToken || envToken;
+      const token = isValidThreadPilotToken(candidateToken) ? candidateToken : '';
 
       if (!token) {
+        if (storedToken && !isValidThreadPilotToken(storedToken)) {
+          localStorage.removeItem('api_token');
+        }
         setIsLoading(false);
         return;
       }

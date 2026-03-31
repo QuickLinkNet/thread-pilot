@@ -4,7 +4,7 @@ import type { ApiCore } from './types';
 export function createPersonaContractApi(core: ApiCore) {
   return {
     getPersonaContract() {
-      return core.request<PersonaContract>('persona-contract?format=json');
+      return core.request<PersonaContract>('persona-contract?format=text');
     },
 
     getPersonaContractHistory(limit: number = 50) {

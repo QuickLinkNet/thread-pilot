@@ -4,6 +4,7 @@ import { Button } from '../atoms/Button';
 import { Card } from '../atoms/Card';
 import { TextField } from '../atoms/FormFields';
 import { AlertBox } from '../molecules/AlertBox';
+import { isValidThreadPilotToken, normalizeThreadPilotToken } from '../../lib/token';
 
 interface TokenLoginProps {
   defaultToken?: string;
@@ -11,15 +12,19 @@ interface TokenLoginProps {
 }
 
 export function TokenLogin({ defaultToken = '', onAuthenticated }: TokenLoginProps) {
-  const [token, setToken] = useState(defaultToken);
+  const [token, setToken] = useState(normalizeThreadPilotToken(defaultToken));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const trimmedToken = token.trim();
+    const trimmedToken = normalizeThreadPilotToken(token);
     if (!trimmedToken || loading) {
+      return;
+    }
+    if (!isValidThreadPilotToken(trimmedToken)) {
+      setError('Ungueltiger Token. Erwartet wird ein 64-stelliger Hex-Token.');
       return;
     }
 
