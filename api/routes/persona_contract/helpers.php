@@ -16,15 +16,8 @@ function parseContractBody() {
 
 function nextContractVersion($pdo) {
     $prefix = gmdate('Y-m-d');
-    $stmt = $pdo->prepare('SELECT version FROM persona_contract_versions WHERE version LIKE ? ORDER BY version DESC LIMIT 1');
+    $stmt = $pdo->prepare('SELECT COUNT(*) FROM persona_contract_versions WHERE version LIKE ?');
     $stmt->execute([$prefix . '.%']);
-    $lastVersion = $stmt->fetchColumn();
-
-    if ($lastVersion === false) {
-        return $prefix . '.1';
-    }
-
-    $parts = explode('.', $lastVersion);
-    $lastNum = (int)end($parts);
-    return $prefix . '.' . ($lastNum + 1);
+    $count = (int)$stmt->fetchColumn();
+    return $prefix . '.' . ($count + 1);
 }

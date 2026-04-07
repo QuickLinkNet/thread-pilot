@@ -171,3 +171,22 @@ export interface PersonaContractHistoryItem {
   created_at: string;
 }
 
+export interface FirstMessage {
+  id: number;
+  version: string;
+  text: string;
+  change_note: string;
+  created_by: string;
+  created_at: string;
+}
+
+export interface FirstMessageHistoryItem {
+  id: number;
+  version: string;
+  content_text: string;
+  change_note: string;
+  created_by: string;
+  is_active: number;
+  created_at: string;
+}
+

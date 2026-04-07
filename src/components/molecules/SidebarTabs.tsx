@@ -1,4 +1,4 @@
-﻿import { Button } from '../atoms/Button';
+import { Button } from '../atoms/Button';
 import { cx } from '../../lib/classnames';
 import type { DashboardTab } from '../../types/dashboard';
 
@@ -12,6 +12,7 @@ const TAB_ITEMS: Array<{ key: DashboardTab; label: string }> = [
   { key: 'tasks', label: 'Tasks' },
   { key: 'events', label: 'Events' },
   { key: 'contract', label: 'Contract' },
+  { key: 'first-message', label: 'First Message' },
   { key: 'personas', label: 'Personas' },
   { key: 'system', label: 'System' },
   { key: 'api', label: 'API Checker' },

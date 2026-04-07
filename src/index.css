@@ -1,5 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import './styles/theme.css';
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import './styles/ui-layout.css';
 @import './styles/ui-components.css';
 @import './styles/ui-responsive.css';
@@ -11,6 +10,7 @@
 @import './styles/system.css';
 @import './styles/events.css';
 @import './styles/contract.css';
+@import './styles/first-message.css';
 
 
 

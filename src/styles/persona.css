@@ -69,9 +69,9 @@
 }
 
 .persona-skill-chip {
-  color: #ffcfd3;
-  border-color: rgba(211, 58, 66, 0.35);
-  background: rgba(211, 58, 66, 0.12);
+  color: #bae6fd;
+  border-color: rgba(0, 217, 255, 0.35);
+  background: rgba(0, 217, 255, 0.12);
 }
 
 .persona-skill-empty {

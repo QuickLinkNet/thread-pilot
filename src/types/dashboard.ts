@@ -3,6 +3,7 @@ export const DASHBOARD_TAB_ORDER = [
   'tasks',
   'events',
   'contract',
+  'first-message',
   'personas',
   'system',
   'api',

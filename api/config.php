@@ -384,7 +384,7 @@ function authenticateIdentity($pdo) {
         exit;
     }
 
-    $stmt = $pdo->prepare('SELECT name, role, skills FROM personas WHERE token = ?');
+    $stmt = $pdo->prepare('SELECT name, role FROM personas WHERE token = ?');
     $stmt->execute([$token]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -404,7 +404,6 @@ function authenticateIdentity($pdo) {
     return [
         'name' => (string)$result['name'],
         'role' => (string)$result['role'],
-        'skills' => (string)($result['skills'] ?? ''),
     ];
 }
 

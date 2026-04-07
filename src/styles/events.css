@@ -56,9 +56,9 @@
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  border: 1px solid rgba(211, 58, 66, 0.45);
-  background: rgba(211, 58, 66, 0.14);
-  color: #ffcad0;
+  border: 1px solid rgba(0, 217, 255, 0.4);
+  background: rgba(0, 217, 255, 0.12);
+  color: #bae6fd;
   font-size: 0.69rem;
   padding: 0.1rem 0.45rem;
   text-transform: uppercase;

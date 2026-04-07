@@ -1,5 +1,6 @@
-﻿import { DefaultApiCore } from './api/core';
+import { DefaultApiCore } from './api/core';
 import { createEventsApi } from './api/events';
+import { createFirstMessageApi } from './api/first-message';
 import { createMessagesApi } from './api/messages';
 import { createPersonaContractApi } from './api/persona-contract';
 import { createPersonasApi } from './api/personas';
@@ -18,6 +19,7 @@ function createApiClient(baseUrl: string, token: string, persona: string) {
     setPersona: core.setPersona.bind(core),
     ...createPersonasApi(core),
     ...createPersonaContractApi(core),
+    ...createFirstMessageApi(core),
     ...createMessagesApi(core),
     ...createTasksApi(core),
     ...createEventsApi(core),

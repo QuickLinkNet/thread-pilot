@@ -98,6 +98,18 @@ try {
         )
     ');
 
+    $pdo->exec('
+        CREATE TABLE IF NOT EXISTS first_message_versions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            version TEXT NOT NULL UNIQUE,
+            content_text TEXT NOT NULL,
+            change_note TEXT NOT NULL DEFAULT "",
+            created_by TEXT NOT NULL DEFAULT "system",
+            is_active INTEGER NOT NULL DEFAULT 0,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )
+    ');
+
     $adminName = trim((string)envValue('THREAD_PILOT_ADMIN_NAME', 'Admin'));
     if ($adminName === '') {
         $adminName = 'Admin';
@@ -142,5 +154,6 @@ try {
     http_response_code(500);
     echo json_encode(['ok' => false, 'error' => 'Installation failed: ' . $e->getMessage()]);
 }
+
 
 

@@ -73,7 +73,9 @@ export function TaskInlineReference({ taskId }: TaskInlineReferenceProps) {
   const [loading, setLoading] = useState(false);
   const [task, setTask] = useState<Task | null>(() => taskCache.get(taskId) ?? null);
   const [error, setError] = useState<string | null>(null);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
   const containerRef = useRef<HTMLSpanElement | null>(null);
+  const previewRef = useRef<HTMLDivElement | null>(null);
 
   const dependsOnLabel = useMemo(() => {
     if (!task?.depends_on?.length) {
@@ -96,6 +98,54 @@ export function TaskInlineReference({ taskId }: TaskInlineReferenceProps) {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const updatePosition = () => {
+      const button = containerRef.current?.querySelector('.task-inline-ref');
+      const preview = previewRef.current;
+      if (!button || !preview) {
+        return;
+      }
+
+      const buttonRect = button.getBoundingClientRect();
+      const previewRect = preview.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const margin = 16;
+
+      let top = buttonRect.bottom + 8;
+      let left = buttonRect.left;
+
+      if (left + previewRect.width > viewportWidth - margin) {
+        left = viewportWidth - previewRect.width - margin;
+      }
+      if (left < margin) {
+        left = margin;
+      }
+
+      if (top + previewRect.height > viewportHeight - margin) {
+        top = buttonRect.top - previewRect.height - 8;
+      }
+      if (top < margin) {
+        top = margin;
+      }
+
+      setPosition({ top, left });
+    };
+
+    updatePosition();
+    window.addEventListener('scroll', updatePosition, true);
+    window.addEventListener('resize', updatePosition);
+
+    return () => {
+      window.removeEventListener('scroll', updatePosition, true);
+      window.removeEventListener('resize', updatePosition);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open || canHover) {
@@ -153,21 +203,33 @@ export function TaskInlineReference({ taskId }: TaskInlineReferenceProps) {
         #{taskId}
       </button>
       {open && (
-        <div className="task-inline-preview" role="tooltip">
+        <div
+          className="task-inline-preview"
+          role="tooltip"
+          ref={previewRef}
+          style={{
+            top: `${position.top}px`,
+            left: `${position.left}px`,
+          }}
+        >
           {loading && <p className="task-inline-preview-loading">Lade Task...</p>}
           {!loading && error && <p className="task-inline-preview-error">{error}</p>}
           {!loading && !error && task && (
             <>
-              <p className="task-inline-preview-id">#{task.id}</p>
+              <div className="task-inline-preview-header">
+                <span className="task-inline-preview-id">#{task.id}</span>
+                <span className="task-inline-preview-status">{toStatusLabel(task.status)}</span>
+              </div>
               <p className="task-inline-preview-title">{task.title}</p>
-              <p className="task-inline-preview-meta">
-                Status: {toStatusLabel(task.status)}
-                <br />
-                Assignee: {task.assignee || 'none'}
-              </p>
-              <p className="task-inline-preview-deps">Depends on: {dependsOnLabel}</p>
-              <p className="task-inline-preview-label">Kurzbeschreibung:</p>
-              <p className="task-inline-preview-desc">{task.description}</p>
+              <div className="task-inline-preview-meta">
+                <span>👤 {task.assignee || 'Unassigned'}</span>
+                {task.depends_on && task.depends_on.length > 0 && (
+                  <span>🔗 {dependsOnLabel}</span>
+                )}
+              </div>
+              {task.description && (
+                <p className="task-inline-preview-desc">{task.description}</p>
+              )}
             </>
           )}
         </div>

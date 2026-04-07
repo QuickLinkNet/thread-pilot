@@ -46,6 +46,11 @@ switch ($route) {
         require __DIR__ . '/routes/persona_contract.php';
         break;
 
+    case 'first-message':
+        $pdo = getDB();
+        require __DIR__ . '/routes/first_message.php';
+        break;
+
     case 'messages':
         $pdo = getDB();
         require __DIR__ . '/routes/messages.php';

@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DEFAULT_DASHBOARD_TAB, isDashboardTab, type DashboardTab } from '../types/dashboard';
 
 const TAB_HASH: Record<DashboardTab, string> = {
@@ -6,6 +6,7 @@ const TAB_HASH: Record<DashboardTab, string> = {
   tasks: '#/tasks',
   events: '#/events',
   contract: '#/contract',
+  'first-message': '#/first-message',
   personas: '#/personas',
   system: '#/system',
   api: '#/api',

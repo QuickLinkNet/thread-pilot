@@ -154,9 +154,9 @@
   min-width: 2.5rem;
   padding: 0.18rem 0.58rem;
   border-radius: 999px;
-  border: 1px solid rgba(211, 58, 66, 0.58);
-  background: linear-gradient(180deg, rgba(211, 58, 66, 0.28), rgba(211, 58, 66, 0.12));
-  color: #ffd5d9;
+  border: 1px solid rgba(0, 217, 255, 0.5);
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.25), rgba(0, 217, 255, 0.12));
+  color: #bae6fd;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -220,31 +220,31 @@
 }
 
 .task-priority-urgent {
-  border-color: rgba(211, 58, 66, 0.6);
-  background: rgba(211, 58, 66, 0.18);
-  color: #ffd4d8;
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.15);
+  color: #fecaca;
 }
 
 .task-deleted-note {
-  color: #ffb9be;
+  color: #fecaca;
   font-size: 0.74rem;
-  border: 1px solid rgba(211, 58, 66, 0.45);
+  border: 1px solid rgba(239, 68, 68, 0.4);
   border-radius: 999px;
   padding: 0.12rem 0.5rem;
 }
 
 .task-locked-note {
-  color: #ffd7da;
+  color: #fecaca;
   font-size: 0.74rem;
-  border: 1px solid rgba(211, 58, 66, 0.45);
-  background: rgba(211, 58, 66, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.12);
   border-radius: 999px;
   padding: 0.12rem 0.5rem;
 }
 
 .task-item-highlight {
-  border-color: rgba(255, 201, 120, 0.62);
-  box-shadow: 0 0 0 1px rgba(255, 201, 120, 0.45), 0 0 0 3px rgba(255, 201, 120, 0.12);
+  border-color: rgba(0, 217, 255, 0.6);
+  box-shadow: 0 0 0 1px rgba(0, 217, 255, 0.45), 0 0 0 3px rgba(0, 217, 255, 0.12);
 }
 
 .task-item-compact .task-item-meta {
@@ -345,8 +345,8 @@
 }
 
 .task-routing-locked {
-  border-color: rgba(211, 58, 66, 0.45);
-  background: rgba(211, 58, 66, 0.12);
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.12);
 }
 
 .task-routing-no_match {

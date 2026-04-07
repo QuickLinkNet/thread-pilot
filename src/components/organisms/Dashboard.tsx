@@ -1,8 +1,9 @@
-﻿import { Chat } from './Chat';
+import { Chat } from './Chat';
 import { TaskList } from './TaskList';
 import { EventsStream } from './EventsStream';
 import { ApiChecker } from './ApiChecker';
 import { ContractManager } from './ContractManager';
+import { FirstMessageManager } from './FirstMessageManager';
 import { PersonaManager } from './PersonaManager';
 import { SystemStatus } from './SystemStatus';
 import { Button } from '../atoms/Button';
@@ -17,6 +18,7 @@ function renderTab(tab: DashboardTab, navigateToTab: (tab: DashboardTab) => void
   if (tab === 'tasks') return <TaskList />;
   if (tab === 'events') return <EventsStream onNavigate={(nextTab) => navigateToTab(nextTab)} />;
   if (tab === 'contract') return <ContractManager />;
+  if (tab === 'first-message') return <FirstMessageManager />;
   if (tab === 'personas') return <PersonaManager />;
   if (tab === 'system') return <SystemStatus />;
   return <ApiChecker />;

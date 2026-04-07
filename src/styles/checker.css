@@ -38,9 +38,9 @@
   min-width: 1.8rem;
   height: 1.4rem;
   border-radius: 999px;
-  border: 1px solid rgba(211, 58, 66, 0.35);
-  background: rgba(211, 58, 66, 0.14);
-  color: #ffc7cb;
+  border: 1px solid rgba(0, 217, 255, 0.35);
+  background: rgba(0, 217, 255, 0.12);
+  color: #bae6fd;
   font-size: 0.73rem;
   display: inline-grid;
   place-items: center;
@@ -60,7 +60,7 @@
   top: 0.45rem;
   bottom: 1rem;
   width: 1px;
-  background: linear-gradient(180deg, rgba(211, 58, 66, 0.4), rgba(211, 58, 66, 0.07));
+  background: linear-gradient(180deg, rgba(0, 217, 255, 0.35), rgba(0, 217, 255, 0.07));
 }
 
 .checker-item {
@@ -81,7 +81,7 @@
   top: 1.15rem;
   width: 0.65rem;
   height: 1px;
-  background: rgba(211, 58, 66, 0.28);
+  background: rgba(0, 217, 255, 0.28);
 }
 
 .checker-item-head {
@@ -106,7 +106,7 @@
 }
 
 .checker-post {
-  color: #ff9da2;
+  color: #bae6fd;
 }
 
 .checker-description {

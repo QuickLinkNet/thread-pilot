@@ -20,8 +20,8 @@ if ($action === 'save') {
     try {
         $pdo->exec('UPDATE persona_contract_versions SET is_active = 0 WHERE is_active = 1');
 
-        $insert = $pdo->prepare("INSERT INTO persona_contract_versions (version, content_text, change_note, created_by, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?)");
-        $insert->execute([$version, $text, $changeNote, $identity['name'], 1, gmdate('Y-m-d H:i:s')]);
+        $insert = $pdo->prepare('INSERT INTO persona_contract_versions (version, content_text, change_note, created_by, is_active, created_at) VALUES (?, ?, ?, ?, 1, datetime("now"))');
+        $insert->execute([$version, $text, $changeNote, $identity['name']]);
         $newId = (int)$pdo->lastInsertId();
 
         logSystemEvent($pdo, 'contract_updated', $identity['name'], 'persona_contract', $newId, [
@@ -42,8 +42,7 @@ if ($action === 'save') {
         ]);
     } catch (Throwable $e) {
         $pdo->rollBack();
-        error_log('Contract save failed: ' . $e->getMessage());
-        errorResponse('Could not save contract: ' . $e->getMessage(), 500);
+        errorResponse('Could not save contract', 500);
     }
 }
 
@@ -74,8 +73,8 @@ if ($action === 'restore') {
     try {
         $pdo->exec('UPDATE persona_contract_versions SET is_active = 0 WHERE is_active = 1');
 
-        $insert = $pdo->prepare("INSERT INTO persona_contract_versions (version, content_text, change_note, created_by, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?)");
-        $insert->execute([$version, $text, $changeNote, $identity['name'], 1, gmdate('Y-m-d H:i:s')]);
+        $insert = $pdo->prepare('INSERT INTO persona_contract_versions (version, content_text, change_note, created_by, is_active, created_at) VALUES (?, ?, ?, ?, 1, datetime("now"))');
+        $insert->execute([$version, $text, $changeNote, $identity['name']]);
         $newId = (int)$pdo->lastInsertId();
 
         logSystemEvent($pdo, 'contract_restored', $identity['name'], 'persona_contract', $newId, [
@@ -97,8 +96,7 @@ if ($action === 'restore') {
         ]);
     } catch (Throwable $e) {
         $pdo->rollBack();
-        error_log('Contract restore failed: ' . $e->getMessage());
-        errorResponse('Could not restore contract version: ' . $e->getMessage(), 500);
+        errorResponse('Could not restore contract version', 500);
     }
 }
 

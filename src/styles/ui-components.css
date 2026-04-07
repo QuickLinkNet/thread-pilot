@@ -1,4 +1,4 @@
-﻿.task-item-head {
+.task-item-head {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -64,19 +64,23 @@
 }
 
 .status-in_progress {
-  color: #ff9da2;
+  color: var(--accent-hover);
+  background: rgba(0, 217, 255, 0.1);
 }
 
 .status-blocked {
-  color: #ff6a76;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .status-ready_for_review {
-  color: #ffc978;
+  color: #c4b5fd;
+  background: rgba(168, 85, 247, 0.1);
 }
 
 .status-done {
-  color: #7fd1b0;
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.1);
 }
 
 .alert-box {
@@ -86,14 +90,15 @@
 }
 
 .alert-error {
-  border-color: rgba(211, 58, 66, 0.45);
-  background: rgba(211, 58, 66, 0.14);
-  color: #ffb9be;
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fecaca;
 }
 
 .alert-info {
-  border-color: rgba(163, 173, 184, 0.45);
-  color: #d7dde5;
+  border-color: rgba(0, 217, 255, 0.3);
+  background: rgba(0, 217, 255, 0.05);
+  color: #bae6fd;
 }
 
 .content-state,
