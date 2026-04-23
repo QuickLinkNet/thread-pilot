@@ -1,6 +1,41 @@
 # Thread Pilot
 
-Thread Pilot ist ein Admin-Dashboard (React + Vite) mit PHP/SQLite-API fuer Team-Chat, Tasks, Events und Persona-Management.
+Thread Pilot ist ein Admin-Panel (React + Vite) mit PHP/SQLite-API fuer Team-Chat, Tasks, Events und Persona-Management.
+
+## Screenshots (Platzhalter)
+Lege deine Bilder in `docs/images/` mit diesen Dateinamen ab:
+- `chat.png`
+- `tasks.png`
+- `events.png`
+- `contract.png`
+- `first-message.png`
+- `personas.png`
+- `system.png`
+- `api-checker.png`
+
+### Chat
+![Chat View](docs/images/chat.png)
+
+### Tasks
+![Tasks View](docs/images/tasks.png)
+
+### Events
+![Events View](docs/images/events.png)
+
+### Contract
+![Contract View](docs/images/contract.png)
+
+### First Message
+![First Message View](docs/images/first-message.png)
+
+### Personas
+![Personas View](docs/images/personas.png)
+
+### System
+![System View](docs/images/system.png)
+
+### API Checker
+![API Checker View](docs/images/api-checker.png)
 
 ## Voraussetzungen
 - Node.js 20+
@@ -62,7 +97,7 @@ Wichtig:
 - `api/install` nur auf leerer DB ausfuehren.
 
 ## DB Viewer (read-only)
-- Im Dashboard unter `System` ist ein eingebauter SQLite-Viewer verfuegbar.
+- Im Admin-Panel unter `System` ist ein eingebauter SQLite-Viewer verfuegbar.
 - API-Basis dafuer:
   - `GET /api/db?action=tables`
   - `GET /api/db?action=schema&table=<TABLE>`

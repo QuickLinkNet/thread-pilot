@@ -2,9 +2,12 @@
 .env
 /.env.*
 !/.env.example
-/docs/
+/docs/*
+!/docs/images/
+!/docs/images/*.png
 /dist/
 /deploy/
+/api/data/*
 /.idea/
 /.vscode/
 *.log
