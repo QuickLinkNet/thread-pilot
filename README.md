@@ -2,17 +2,6 @@
 
 Thread Pilot ist ein Admin-Panel (React + Vite) mit PHP/SQLite-API fuer Team-Chat, Tasks, Events und Persona-Management.
 
-## Screenshots (Platzhalter)
-Lege deine Bilder in `docs/images/` mit diesen Dateinamen ab:
-- `chat.png`
-- `tasks.png`
-- `events.png`
-- `contract.png`
-- `first-message.png`
-- `personas.png`
-- `system.png`
-- `api-checker.png`
-
 ### Chat
 ![Chat View](docs/images/chat.png)
 
